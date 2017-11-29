@@ -1,17 +1,24 @@
+"""This module creates a graph from an input file in order to do TSP
+calculations using the Christofides Algorithm"""
+
 import math
 
 def calc_distance(x_coord1, y_coord1, x_coord2, y_coord2):
+    """Calculates the distance between two points with given coordinates"""
     distance = math.sqrt((x_coord2-x_coord1)**2+(y_coord2-y_coord1)**2)
     return distance
 
 class Graph(object):
+    """Class that defines a graph for TSP problem"""
     def __init__(self):
         self.nodes = []
 
     def add_node(self, x_coord, y_coord):
+        """Adds a node to the graph"""
         self.nodes.append([x_coord, y_coord, []])
 
     def populate_distances(self):
+        """Adds distances to every other node on each node of the graph"""
         for i in range(0, len(self.nodes)):
             for j in range(0, len(self.nodes)):
                 x_coord1 = self.nodes[i][0]
@@ -22,10 +29,12 @@ class Graph(object):
                 self.nodes[i][2].append(distance)
 
     def print_nodes(self):
+        """Show all of the nodes of the graph"""
         for node in self.nodes:
             print(node)
 
 def main():
+    """Main function"""
     graph = Graph()
 
     data_file = open("test-input-1.txt", "r")
