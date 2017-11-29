@@ -1,0 +1,25 @@
+Instructions to run:
+
+	1. Place act.txt in same directory as code. 
+
+		- No command line arguments needed!
+
+	2. Execute:
+
+		$ node lastToStart.js
+
+	3. You will get output that looks something like this:
+
+		Set 1
+		Number of activities selected = 4
+		Activities: 2 4 9 11 
+
+		Set 2
+		Number of activities selected = 2
+		Activities: 2 1
+
+Other Stuff:
+
+	The other text for Problem 5 is both in my Document on Canvas and in a text file:
+
+		Problem5.txt

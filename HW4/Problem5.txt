@@ -1,0 +1,19 @@
+Verbal Description:
+
+The algorithm starts with a sort of the activities by their start time, descending, so that the last start time is at the front of the array. The first chosen for the returned array will be the index 0 of the activity array. The algorithm would then loopthrough the rest of the activities, picking the one with the next latest start time only if the end time does not overlap with the last start time. The greedy part of this is the pick of the first case of the activity with the non-overlapping end time. This keeps going into sub-problems, until all activities have been tested.
+
+Pseudocode:
+
+Greedy-Last-Start-Selector:
+  n = s.length
+  A = {a1}
+  k = 1
+  for n to m = 2: (a reverse for loop)
+    if s[m] >= f[k]:
+      A = A U {am}
+      k = m
+  return A
+
+Time Analysis:
+
+The sort in the algorithm is the standard sort in JavaScript, which is based on a mergesort, and runs in a time of Θ(n log n). The rest of the algorithm runs in Θ(n) because it only has to step through each element of the array. The total running time would then be Θ(n log n).

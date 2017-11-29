@@ -1,0 +1,21 @@
+Instructions to run:
+
+	1. Place data.txt in same directory as code. 
+
+		- No command line arguments needed!
+
+	2. Execute:
+
+		$ python insertsort.py
+
+		AND/OR
+
+		$ python mergesort.py	
+
+	3. You will get these files with output:
+		
+		insert.out
+
+		AND/OR
+
+		merge.out

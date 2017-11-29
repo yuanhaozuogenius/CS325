@@ -1,0 +1,13 @@
+Instructions to run:
+
+	1. Place data.txt in same directory as code. 
+
+		- No command line arguments needed!
+
+	2. Execute:
+
+		$ python stoogesort.py
+
+	3. You will get this file with output:
+		
+		stooge.out

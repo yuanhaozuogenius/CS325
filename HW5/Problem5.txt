@@ -1,0 +1,41 @@
+a) Pseudocode: 
+
+BFS(G)
+    for each vertex in G:
+        if(vertex.visited == false):
+            add vertex to queue
+            vertex.distance = 0
+
+            while(queue is not empty):
+                nextItem = queue.first
+                nextItem.visited = true
+
+                for each item in nextItem.neighbors:
+                    if(neighbor.visited == false):
+                        nextItem.predecessor = vertex
+                        nextItem.distance = vertex.distance + 1
+                        queue.push neighbor
+
+    for each vertex in G:
+        if(distance.even):
+            for each neighbor of G:
+                if(neighbor is also face):
+                    impossible = true
+                else:
+                    faces.push
+        else:
+            for each neighbor of G:
+                if(neighbor is also heel):
+                    impossible = true
+                else:
+                    heels.push
+
+    if(impossible):
+        return impossible
+    else:
+        return faces and heels
+
+b) Running time would be Theta(V + E) with V being the vertices (wrestlers) and E 
+being the edges (rivalries)
+
+c) See wrestlerGraph.js
