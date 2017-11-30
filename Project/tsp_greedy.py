@@ -1,8 +1,20 @@
+"""
+This module creates a graph from an input file in order to do TSP
+calculations using the Christofides Algorithm
+
+Written by:
+Samantha Manubay
+Prathik Sannecy
+Christian Mello
+"""
+
 import math
 import sys
 
 
 def greedy_algorithm(list_of_cities):
+    """Solves TSP using the greedy algorithm and returns the tour"""
+
     # this will hold the shortest tour
     shortest_tour_route = []
 
@@ -39,7 +51,8 @@ def greedy_algorithm(list_of_cities):
                 y2_coord = tour[-1][1]
 
                 # calculate result as per the distance formula
-                distance = math.sqrt(math.pow(x1_coord - x2_coord, 2) + math.pow(y1_coord - y2_coord, 2))
+                distance = math.sqrt(
+                    math.pow(x1_coord - x2_coord, 2) + math.pow(y1_coord - y2_coord, 2))
 
                 # round the result
                 distance = int(round(distance))
@@ -68,19 +81,17 @@ def greedy_algorithm(list_of_cities):
         y1_coord = tour[0][-1]
         y2_coord = tour[-1][1]
 
-        total_distance += int(round(math.sqrt(math.pow(x1_coord - x2_coord, 2) + math.pow(y1_coord - y2_coord, 2))))
-
+        total_distance += int(round(math.sqrt((x1_coord - x2_coord)
+                                              ** 2 + (y1_coord - y2_coord) ** 2)))
         # creating a list to hold the tour_city_ids
         tour_city_ids = []
-
-
 
         for i in tour:
             # add the city ids to the list
             tour_city_ids.append(list_of_cities.index(i))
 
         # if the total_distance of this tour is shorter, update
-        if (total_distance < shortest_tour_distance):
+        if total_distance < shortest_tour_distance:
             shortest_tour_distance = total_distance
             shortest_tour_route = tour_city_ids
 
@@ -92,28 +103,38 @@ def greedy_algorithm(list_of_cities):
     return shortest_tour_distance, shortest_tour_route
 
 
-dataFile = open("tsp_example_1.txt", "r");
-outFile = open("tsp_example_1_solutions.txt", "w");
+def main():
+    """Takes an input file from the command line and runs a greedy algorithm to
+    solve the Travelling Salesman Problem"""
 
-list_of_cities = []
+    data_filename = sys.argv[1]
+    data_file = open(data_filename, "r")
+    out_filename = data_filename + ".tour"
+    out_file = open(out_filename, "w")
 
-for line in dataFile:
-    # split data into a graph
-    lineArray = list(map(int, line.split()))
+    list_of_cities = []
 
-    # add the last two line columns to coords
-    coords = lineArray[1:]
+    for line in data_file:
+        # split data into a graph
+        line_array = list(map(int, line.split()))
 
-    # add these coords to list of cities
-    list_of_cities.append(coords)
+        # add the last two line columns to coords
+        coords = line_array[1:]
 
-# send list to greedy_algorithm function and get tour list in return
-total_distance, test_input_solution = greedy_algorithm(list_of_cities)
-# write to file the total distance
-outFile.write('%s \n' % total_distance)
-for line in test_input_solution:
-    # write to file the city ids in order of visitation
-    outFile.write('%s \n' % line)
+        # add these coords to list of cities
+        list_of_cities.append(coords)
 
-dataFile.close()
-outFile.close()
+    # send list to greedy_algorithm function and get tour list in return
+    total_distance, test_input_solution = greedy_algorithm(list_of_cities)
+    # write to file the total distance
+    out_file.write('%s \n' % total_distance)
+    for line in test_input_solution:
+        # write to file the city ids in order of visitation
+        out_file.write('%s \n' % line)
+
+    data_file.close()
+    out_file.close()
+
+
+if __name__ == "__main__":
+    main()
