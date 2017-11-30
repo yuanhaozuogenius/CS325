@@ -83,15 +83,18 @@ def greedy_algorithm(list_of_cities):
 
         total_distance += int(round(math.sqrt((x1_coord - x2_coord)
                                               ** 2 + (y1_coord - y2_coord) ** 2)))
+                                              
         # creating a list to hold the tour_city_ids
         tour_city_ids = []
 
         for i in tour:
             # add the city ids to the list
             index = [l for l, n in enumerate(list_of_cities) if n == i]
+
             for k in index:
                 if k not in tour_city_ids:
                     tour_city_ids.append(k)
+
             if len(index) > 1:
                 pass
 
@@ -131,8 +134,10 @@ def main():
 
     # send list to greedy_algorithm function and get tour list in return
     total_distance, test_input_solution = greedy_algorithm(list_of_cities)
+
     # write to file the total distance
     out_file.write('%s \n' % total_distance)
+
     for line in test_input_solution:
         # write to file the city ids in order of visitation
         out_file.write('%s \n' % line)
