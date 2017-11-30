@@ -51,14 +51,14 @@ def greedy_algorithm(list_of_cities):
                 y2_coord = tour[-1][1]
 
                 # calculate result as per the distance formula
-                distance = math.sqrt(
-                    math.pow(x1_coord - x2_coord, 2) + math.pow(y1_coord - y2_coord, 2))
+                distance = math.sqrt((x1_coord - x2_coord)
+                                     ** 2 + (y1_coord - y2_coord) ** 2)
 
                 # round the result
                 distance = int(round(distance))
 
                 # if shorter distance is found
-                if (distance < shortest_distance):
+                if distance < shortest_distance:
 
                     # update city id with shortest_distance
                     shortest_distance_id = i
@@ -88,7 +88,12 @@ def greedy_algorithm(list_of_cities):
 
         for i in tour:
             # add the city ids to the list
-            tour_city_ids.append(list_of_cities.index(i))
+            index = [l for l, n in enumerate(list_of_cities) if n == i]
+            for k in index:
+                if k not in tour_city_ids:
+                    tour_city_ids.append(k)
+            if len(index) > 1:
+                pass
 
         # if the total_distance of this tour is shorter, update
         if total_distance < shortest_tour_distance:
