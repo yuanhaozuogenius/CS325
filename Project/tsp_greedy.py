@@ -42,12 +42,12 @@ def greedy_algorithm(list_of_cities):
             shortest_distance = sys.maxsize
 
             # find in remaining_cities one with shortest distance to current shortest_distance_id
-            for i in remaining_cities:
+            for j in remaining_cities:
 
                 # define the coordinates
-                x1_coord = i[0]
+                x1_coord = j[0]
                 x2_coord = tour[-1][0]
-                y1_coord = i[1]
+                y1_coord = j[1]
                 y2_coord = tour[-1][1]
 
                 # calculate result as per the distance formula
@@ -61,7 +61,7 @@ def greedy_algorithm(list_of_cities):
                 if distance < shortest_distance:
 
                     # update city id with shortest_distance
-                    shortest_distance_id = i
+                    shortest_distance_id = j
 
                     # update shortest_distance with found distance
                     shortest_distance = distance
@@ -83,13 +83,13 @@ def greedy_algorithm(list_of_cities):
 
         total_distance += int(round(math.sqrt((x1_coord - x2_coord)
                                               ** 2 + (y1_coord - y2_coord) ** 2)))
-                                              
+
         # creating a list to hold the tour_city_ids
         tour_city_ids = []
 
-        for i in tour:
+        for j in tour:
             # add the city ids to the list
-            index = [l for l, n in enumerate(list_of_cities) if n == i]
+            index = [l for l, n in enumerate(list_of_cities) if n == j]
 
             for k in index:
                 if k not in tour_city_ids:
