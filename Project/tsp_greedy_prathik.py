@@ -1,6 +1,6 @@
 """
 This module creates a graph from an input file in order to do TSP
-calculations using the Christofides Algorithm
+calculations using the Greedy Algorithm
 Written by:
 Samantha Manubay
 Prathik Sannecy
