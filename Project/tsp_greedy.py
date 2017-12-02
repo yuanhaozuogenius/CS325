@@ -66,9 +66,6 @@ def greedy_algorithm_fast(list_of_cities, outFile):
             # calculate result as per the distance formula
             distance = compute_distance(x1_coord, x2_coord, y1_coord, y2_coord)
 
-            # round the result
-            distance = int(round(distance))
-
             # if shorter distance is found
             if (distance < shortest_distance):
 
