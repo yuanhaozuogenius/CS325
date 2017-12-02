@@ -152,9 +152,15 @@ def greedy_algorithm(list_of_cities):
 
             # find in remaining_cities one with shortest distance to current shortest_distance_id
             for j in remaining_cities:
-
+                
+                # define the coordinates
+                x1_coord = j[0]
+                x2_coord = tour[-1][0]
+                y1_coord = j[1]
+                y2_coord = tour[-1][1]
+                
                 # get the rounded distance per the distance formula
-                distance = compute_distance(j[0], tour[-1][0], j[1], tour[-1][1])
+                distance = compute_distance(x1_coord, x2_coord, y1_coord, y2_coord)
 
                 # if shorter distance is found
                 if distance < shortest_distance:
@@ -174,8 +180,14 @@ def greedy_algorithm(list_of_cities):
             # pop the previously selected city from the list
             remaining_cities.remove(shortest_distance_id)
 
-        #return path
-        total_distance += compute_distance(tour[0][0], tour[-1][0], tour[0][-1], tour[-1][1])
+        # define the coordinates
+        x1_coord = tour[0][0]
+        x2_coord = tour[-1][0]
+        y1_coord = tour[0][-1]
+        y2_coord = tour[-1][1]
+        
+        # return path
+        total_distance += compute_distance(x1_coord, x2_coord, y1_coord, y2_coord)
 
         # creating a list to hold the tour_city_ids
         tour_city_ids = []
